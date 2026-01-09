@@ -13,37 +13,37 @@
 - [x] Set up Cursor IDE rules and prompts
 - [x] Set up VSCode configuration
 - [x] Create GitHub Copilot instructions
-- [ ] Initialize git repository
-- [ ] Create bun workspace configuration
-- [ ] Set up monorepo package structure
+- [x] Initialize git repository
+- [x] Create bun workspace configuration
+- [x] Set up monorepo package structure
 
 ### Packages
-- [ ] Create `/packages/tokens` package skeleton
-- [ ] Create `/packages/components` package skeleton
-- [ ] Create `/packages/adapters` directory
+- [x] Create `/packages/tokens` package skeleton
+- [x] Create `/packages/components` package skeleton
+- [x] Create `/packages/adapters` directory
 
 ### Apps
-- [ ] Create `/apps/storybook` with Web Components renderer
-- [ ] Verify Storybook starts with placeholder story
-- [ ] Create `/apps/storybook-hub` skeleton
+- [x] Create `/apps/storybook` with Web Components renderer
+- [x] Verify Storybook starts with placeholder story
+- [x] Create `/apps/storybook-hub` skeleton
 
 ### Scripts
-- [ ] `bun run dev` starts theme lab storybook
-- [ ] `bun run build` builds all packages
-- [ ] `bun run lint` runs linting
-- [ ] `bun run test` runs tests
+- [x] `bun run dev` starts theme lab storybook
+- [x] `bun run build` builds all packages
+- [x] `bun run lint` runs linting
+- [x] `bun run test` runs tests
 
 ### CI/CD
-- [ ] Create GitHub Actions workflow
-- [ ] CI runs `bun install`
-- [ ] CI runs `bun run lint`
-- [ ] CI runs `bun run test`
-- [ ] CI runs `bun run build`
+- [x] Create GitHub Actions workflow
+- [ ] CI runs `bun install` (pending first run)
+- [ ] CI runs `bun run lint` (pending first run)
+- [ ] CI runs `bun run test` (pending first run)
+- [ ] CI runs `bun run build` (pending first run)
 
 ### Documentation
 - [x] Create TODO.md
 - [x] Create WORKLOG.md
-- [ ] Create README.md
+- [x] Create README.md
 
 ---
 

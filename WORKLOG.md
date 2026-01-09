@@ -44,4 +44,44 @@
 
 ---
 
+## 2026-01-08 (continued)
+
+### Session 2 - Milestone 0 Complete
+
+**Summary:** Completed Milestone 0 Foundation setup.
+
+**Actions Taken:**
+1. Installed dependencies with `bun install`
+2. Built tokens with `bun run tokens:build` - generated 111 tokens
+3. Built components with `bun run --filter @theme-lab/components build`
+4. Started Storybook successfully on http://localhost:6006
+5. Created initial git commit on `main` branch
+6. Created `poc/m0-foundation` branch
+7. Pushed both branches to origin
+
+**Commands Run:**
+```bash
+bun install
+bun run tokens:build
+bun run --filter @theme-lab/components build
+bun run dev
+git checkout -b poc/m0-foundation
+git push -u origin poc/m0-foundation
+git checkout main
+git push -u origin main
+```
+
+**Verification:**
+- ✅ `bun install` works clean (535 packages)
+- ✅ Token generation works (111 tokens, 3 output files)
+- ✅ Component build works (TypeScript + styles)
+- ✅ Storybook starts on port 6006
+- ✅ Button and Input stories render
+
+**Notes:**
+- Storybook shows minor version warning (8.6.14 vs 8.6.15) - not blocking
+- Both branches pushed; M0 is foundation, ready for M1 work
+
+---
+
 *Add new entries above this line*
