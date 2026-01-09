@@ -47,24 +47,24 @@
 
 ---
 
-## Milestone 1: Token Pipeline
+## Milestone 1: Token Pipeline ✅
 **Branch:** `poc/m1-tokens`  
 **Goal:** Token schema + generators + deterministic output
 
 ### Token System
-- [ ] Create `tokens.json` canonical source
-- [ ] Define token schema (colors, spacing, typography, etc.)
-- [ ] Create token validation script
+- [x] Create `tokens.json` canonical source
+- [x] Define token schema (colors, spacing, typography, etc.)
+- [x] Create token validation script with JSON Schema (Ajv)
 
 ### Generators
-- [ ] Generate `tokens.css` (CSS custom properties)
-- [ ] Generate `tokens.dark.css` (dark theme)
-- [ ] Generate `tailwind.theme.css` (Tailwind v4 theme)
+- [x] Generate `tokens.css` (CSS custom properties)
+- [x] Generate `tokens.dark.css` (dark theme)
+- [x] Generate `tailwind.theme.css` (Tailwind v4 theme)
 
 ### Testing
-- [ ] Create snapshot tests for generated outputs
-- [ ] Verify deterministic generation
-- [ ] Document token addition process
+- [x] Create snapshot tests for generated outputs
+- [x] Verify deterministic generation
+- [x] Document token addition process (README.md)
 
 ---
 

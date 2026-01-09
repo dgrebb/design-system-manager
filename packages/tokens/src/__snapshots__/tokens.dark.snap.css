@@ -1,0 +1,31 @@
+/**
+ * Theme Lab Dark Theme
+ * Generated file - do not edit directly
+ */
+
+:root.dark,
+[data-theme="dark"] {
+  --tl-color-background-base: #0f172a;
+  --tl-color-background-muted: #1e293b;
+  --tl-color-background-subtle: #334155;
+  --tl-color-foreground-base: #f8fafc;
+  --tl-color-foreground-muted: #94a3b8;
+  --tl-color-foreground-subtle: #64748b;
+  --tl-color-border-base: #334155;
+  --tl-color-border-muted: #1e293b;
+  --tl-color-border-strong: #475569;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light):not([data-theme="light"]) {
+    --tl-color-background-base: #0f172a;
+    --tl-color-background-muted: #1e293b;
+    --tl-color-background-subtle: #334155;
+    --tl-color-foreground-base: #f8fafc;
+    --tl-color-foreground-muted: #94a3b8;
+    --tl-color-foreground-subtle: #64748b;
+    --tl-color-border-base: #334155;
+    --tl-color-border-muted: #1e293b;
+    --tl-color-border-strong: #475569;
+  }
+}

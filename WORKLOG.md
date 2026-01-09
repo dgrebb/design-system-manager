@@ -84,4 +84,48 @@ git push -u origin main
 
 ---
 
+## 2026-01-08 (continued)
+
+### Session 3 - Milestone 1: Token Pipeline
+
+**Summary:** Implemented token validation, snapshot testing, and documentation.
+
+**Actions Taken:**
+1. Created `token-schema.json` with full JSON Schema validation
+2. Enhanced `validate.ts` to use Ajv for schema validation
+3. Added semantic validation (contrast warnings, scale consistency)
+4. Added duplicate CSS variable detection
+5. Created comprehensive snapshot tests for all generated CSS
+6. Created `packages/tokens/README.md` with full documentation
+
+**Files Created/Modified:**
+- `packages/tokens/token-schema.json` — JSON Schema for tokens
+- `packages/tokens/src/validate.ts` — Enhanced validator with Ajv
+- `packages/tokens/src/generate.test.ts` — Snapshot tests
+- `packages/tokens/README.md` — Package documentation
+- `packages/tokens/src/__snapshots__/` — CSS snapshots
+
+**Test Results:**
+```
+9 pass, 0 fail
+- Token Generation: 5 tests
+- Token Snapshots: 3 tests  
+- Token Validation: 1 test
+```
+
+**Commands Run:**
+```bash
+git checkout -b poc/m1-tokens
+bun install  # Added ajv dependency
+bun run tokens:validate
+bun run --filter @theme-lab/tokens test
+```
+
+**Decisions Made:**
+- Using Ajv for JSON Schema validation (industry standard)
+- Snapshot tests for deterministic output verification
+- Semantic validation for quality warnings (not just structure)
+
+---
+
 *Add new entries above this line*

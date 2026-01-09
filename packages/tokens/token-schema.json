@@ -1,0 +1,198 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://theme-lab.dev/token-schema.json",
+  "title": "Theme Lab Design Tokens",
+  "description": "Schema for Theme Lab design token definitions",
+  "type": "object",
+  "required": ["color", "spacing", "typography", "borderRadius", "shadow", "transition"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Reference to this schema"
+    },
+    "color": {
+      "type": "object",
+      "description": "Color tokens",
+      "required": ["primary", "secondary", "neutral", "success", "warning", "error", "background", "foreground", "border"],
+      "properties": {
+        "primary": { "$ref": "#/$defs/colorScale" },
+        "secondary": { "$ref": "#/$defs/colorScale" },
+        "neutral": { "$ref": "#/$defs/neutralScale" },
+        "success": { "$ref": "#/$defs/colorScale" },
+        "warning": { "$ref": "#/$defs/colorScale" },
+        "error": { "$ref": "#/$defs/colorScale" },
+        "background": { "$ref": "#/$defs/backgroundColors" },
+        "foreground": { "$ref": "#/$defs/foregroundColors" },
+        "border": { "$ref": "#/$defs/borderColors" }
+      },
+      "additionalProperties": false
+    },
+    "spacing": {
+      "type": "object",
+      "description": "Spacing tokens",
+      "patternProperties": {
+        "^[0-9]+(\\.[0-9]+)?$|^px$": { "$ref": "#/$defs/spacingValue" }
+      },
+      "additionalProperties": false
+    },
+    "typography": {
+      "type": "object",
+      "description": "Typography tokens",
+      "required": ["fontFamily", "fontSize", "fontWeight", "lineHeight"],
+      "properties": {
+        "fontFamily": {
+          "type": "object",
+          "required": ["sans", "mono"],
+          "properties": {
+            "sans": { "type": "string" },
+            "mono": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "fontSize": {
+          "type": "object",
+          "patternProperties": {
+            "^(xs|sm|base|lg|xl|[2-9]xl)$": { "$ref": "#/$defs/sizeValue" }
+          },
+          "additionalProperties": false
+        },
+        "fontWeight": {
+          "type": "object",
+          "patternProperties": {
+            "^(normal|medium|semibold|bold)$": {
+              "type": "string",
+              "pattern": "^[0-9]{3}$"
+            }
+          },
+          "additionalProperties": false
+        },
+        "lineHeight": {
+          "type": "object",
+          "patternProperties": {
+            "^(none|tight|snug|normal|relaxed|loose)$": {
+              "type": "string",
+              "pattern": "^[0-9]+(\\.[0-9]+)?$"
+            }
+          },
+          "additionalProperties": false
+        },
+        "letterSpacing": {
+          "type": "object",
+          "patternProperties": {
+            "^(tighter|tight|normal|wide|wider)$": {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?em$"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "borderRadius": {
+      "type": "object",
+      "description": "Border radius tokens",
+      "patternProperties": {
+        "^(none|sm|md|lg|xl|2xl|full)$": { "$ref": "#/$defs/radiusValue" }
+      },
+      "additionalProperties": false
+    },
+    "shadow": {
+      "type": "object",
+      "description": "Shadow tokens",
+      "patternProperties": {
+        "^(none|sm|md|lg|xl)$": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "transition": {
+      "type": "object",
+      "description": "Transition tokens",
+      "patternProperties": {
+        "^(none|fast|normal|slow)$": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "zIndex": {
+      "type": "object",
+      "description": "Z-index tokens",
+      "patternProperties": {
+        "^([0-9]+|dropdown|modal|tooltip)$": {
+          "oneOf": [
+            { "type": "string", "pattern": "^[0-9]+$" },
+            { "type": "number" }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "colorValue": {
+      "type": "string",
+      "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$|^rgb\\(|^rgba\\(|^hsl\\(|^hsla\\(",
+      "description": "Valid CSS color value (hex, rgb, rgba, hsl, hsla)"
+    },
+    "colorScale": {
+      "type": "object",
+      "required": ["base", "hover", "active", "foreground"],
+      "properties": {
+        "base": { "$ref": "#/$defs/colorValue" },
+        "hover": { "$ref": "#/$defs/colorValue" },
+        "active": { "$ref": "#/$defs/colorValue" },
+        "foreground": { "$ref": "#/$defs/colorValue" }
+      },
+      "additionalProperties": false
+    },
+    "neutralScale": {
+      "type": "object",
+      "patternProperties": {
+        "^(50|100|200|300|400|500|600|700|800|900|950)$": { "$ref": "#/$defs/colorValue" }
+      },
+      "additionalProperties": false
+    },
+    "backgroundColors": {
+      "type": "object",
+      "required": ["base", "muted", "subtle"],
+      "properties": {
+        "base": { "$ref": "#/$defs/colorValue" },
+        "muted": { "$ref": "#/$defs/colorValue" },
+        "subtle": { "$ref": "#/$defs/colorValue" }
+      },
+      "additionalProperties": false
+    },
+    "foregroundColors": {
+      "type": "object",
+      "required": ["base", "muted", "subtle"],
+      "properties": {
+        "base": { "$ref": "#/$defs/colorValue" },
+        "muted": { "$ref": "#/$defs/colorValue" },
+        "subtle": { "$ref": "#/$defs/colorValue" }
+      },
+      "additionalProperties": false
+    },
+    "borderColors": {
+      "type": "object",
+      "required": ["base", "muted", "strong"],
+      "properties": {
+        "base": { "$ref": "#/$defs/colorValue" },
+        "muted": { "$ref": "#/$defs/colorValue" },
+        "strong": { "$ref": "#/$defs/colorValue" }
+      },
+      "additionalProperties": false
+    },
+    "spacingValue": {
+      "type": "string",
+      "pattern": "^([0-9]+(\\.[0-9]+)?(rem|em|px)?|0|[0-9]+px)$"
+    },
+    "sizeValue": {
+      "type": "string",
+      "pattern": "^[0-9]+(\\.[0-9]+)?(rem|em|px)$"
+    },
+    "radiusValue": {
+      "type": "string",
+      "pattern": "^([0-9]+(\\.[0-9]+)?(rem|em|px)?|0|9999px)$"
+    }
+  }
+}

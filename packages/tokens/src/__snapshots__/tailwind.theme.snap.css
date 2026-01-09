@@ -1,0 +1,41 @@
+/**
+ * Theme Lab Tailwind v4 Theme
+ * Generated file - do not edit directly
+ * Import this file in your Tailwind CSS entry point
+ */
+
+@theme {
+  /* Colors */
+  --color-primary: var(--tl-color-primary-base);
+  --color-primary-hover: var(--tl-color-primary-hover);
+  --color-primary-active: var(--tl-color-primary-active);
+  --color-primary-foreground: var(--tl-color-primary-foreground);
+
+  --color-secondary: var(--tl-color-secondary-base);
+  --color-secondary-hover: var(--tl-color-secondary-hover);
+  --color-secondary-foreground: var(--tl-color-secondary-foreground);
+
+  --color-success: var(--tl-color-success-base);
+  --color-warning: var(--tl-color-warning-base);
+  --color-error: var(--tl-color-error-base);
+
+  --color-background: var(--tl-color-background-base);
+  --color-foreground: var(--tl-color-foreground-base);
+  --color-muted: var(--tl-color-foreground-muted);
+  --color-border: var(--tl-color-border-base);
+
+  /* Border Radius */
+  --radius-sm: var(--tl-borderRadius-sm);
+  --radius-md: var(--tl-borderRadius-md);
+  --radius-lg: var(--tl-borderRadius-lg);
+  --radius-xl: var(--tl-borderRadius-xl);
+
+  /* Shadows */
+  --shadow-sm: var(--tl-shadow-sm);
+  --shadow-md: var(--tl-shadow-md);
+  --shadow-lg: var(--tl-shadow-lg);
+
+  /* Typography */
+  --font-sans: var(--tl-typography-fontFamily-sans);
+  --font-mono: var(--tl-typography-fontFamily-mono);
+}
