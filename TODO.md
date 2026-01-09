@@ -68,30 +68,35 @@
 
 ---
 
-## Milestone 2: Web Components
+## Milestone 2: Web Components ✅
 **Branch:** `poc/m2-wc-components`  
 **Goal:** 8-12 components consuming tokens
 
 ### Core Components
-- [ ] Button (primary, secondary, ghost, outline)
-- [ ] Input (text, password, email)
-- [ ] Checkbox (default, indeterminate)
-- [ ] Switch
-- [ ] Select (single, searchable)
-- [ ] Card (default, interactive)
-- [ ] Dialog/Modal
-- [ ] Tooltip
+- [x] Button (primary, secondary, ghost, outline)
+- [x] Input (text, password, email)
+- [x] Checkbox (default, indeterminate)
+- [x] Switch
+- [ ] Select (single, searchable) — deferred to M3
+- [x] Card (default, interactive)
+- [ ] Dialog/Modal — deferred to M3
+- [x] Tooltip
 
 ### Optional Components
-- [ ] Tabs
-- [ ] Badge
-- [ ] Avatar
-- [ ] Alert
+- [x] Tabs
+- [x] Badge
+- [ ] Avatar — deferred
+- [ ] Alert — deferred
 
 ### Quality
-- [ ] Storybook stories for all components
-- [ ] Accessibility basics (focus, keyboard)
-- [ ] Token changes affect visuals globally
+- [x] Storybook stories for all components
+- [x] Accessibility basics (focus, keyboard)
+- [x] Token changes affect visuals globally
+
+### Additional
+- [x] Upgraded Storybook to v10.1.11
+- [x] Added addon-a11y for accessibility testing
+- [x] Fixed Shadow DOM rendering for proper slot behavior
 
 ---
 

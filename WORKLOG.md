@@ -128,4 +128,52 @@ bun run --filter @theme-lab/tokens test
 
 ---
 
+## 2026-01-09
+
+### Session 4 - Milestone 2: Web Components
+
+**Summary:** Implemented 8 web components with Shadow DOM and Storybook stories.
+
+**Actions Taken:**
+1. Created new components: Checkbox, Switch, Card, Badge, Tooltip, Tabs
+2. Converted all components from Light DOM to Shadow DOM for proper slot behavior
+3. Migrated styles from external CSS files to inline `css` template literals
+4. Upgraded Storybook from 8.6.x to 10.1.11
+5. Added addon-a11y for accessibility testing
+6. Fixed CSS variable references (e.g., `--tl-spacing-1.5` not `--tl-spacing-1-5`)
+7. Removed MDX files (incompatible with Storybook 10 + Bun)
+8. Created comprehensive stories for all components
+
+**Components Implemented (8 total):**
+- Button (primary, secondary, ghost, outline variants + sizes + loading)
+- Input (sizes, error state, types)
+- Checkbox (checked, indeterminate, disabled)
+- Switch (sizes, toggle animation)
+- Card (variants, slots for header/footer, interactive)
+- Tooltip (positions: top/bottom/left/right)
+- Tabs (variants: default/pills/underline, sizes)
+- Badge (variants, sizes, dot indicator)
+
+**Commands Run:**
+```bash
+git checkout -b poc/m2-wc-components
+bun add -d @storybook/addon-a11y
+npx storybook@latest upgrade
+bun run build
+bun run dev
+git push origin poc/m2-wc-components
+```
+
+**Decisions Made:**
+- Switched to Shadow DOM to properly handle `<slot>` elements
+- Inline styles using Lit's `css` tagged template literals (simpler build)
+- Deferred Select and Dialog/Modal components to M3
+- Skipped vitest addon (compatibility issues with Storybook 10)
+
+**Known Issues:**
+- Storybook 10 + Bun has MDX import issues (removed MDX for now)
+- vitest addon requires complex workspace config, skipped for now
+
+---
+
 *Add new entries above this line*
