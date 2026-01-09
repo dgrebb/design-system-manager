@@ -127,22 +127,26 @@
 
 ---
 
-## Milestone 4: Storybook Hub
+## Milestone 4: Storybook Hub ✅
 **Branch:** `poc/m4-storybook-hub`  
 **Goal:** Composition + dropdown to switch base library emphasis
 
 ### Composition
-- [ ] Configure storybook refs
-- [ ] Add theme-lab storybook ref
-- [ ] Add adapter storybook refs
+- [x] Configure storybook refs
+- [x] Add theme-lab storybook ref
+- [ ] Add adapter storybook refs — deferred to M5
+
+### Hub Documentation
+- [x] Create Welcome story
+- [x] Create Getting Started story
+- [x] Document how to add adapters
 
 ### Base Library Selector
-- [ ] Toolbar addon for library switching
-- [ ] Filter/group by library
+- [ ] Toolbar addon for library switching — deferred
+- [ ] Filter/group by library — deferred
 
 ### Adapters
-- [ ] shadcn-svelte adapter (primary)
-- [ ] Second adapter (optional)
+- [ ] shadcn-svelte adapter — moved to M5
 
 ---
 

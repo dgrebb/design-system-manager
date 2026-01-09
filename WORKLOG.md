@@ -221,4 +221,36 @@ git push origin poc/m3-theme-lab-addon
 
 ---
 
+## 2026-01-09 (continued)
+
+### Session 6 - Milestone 4: Storybook Hub
+
+**Summary:** Configured Storybook composition for the Hub.
+
+**Actions Taken:**
+1. Updated Hub main.ts with refs to Theme Lab storybook
+2. Removed unsupported addons (vitest, a11y) from hub
+3. Created Hub introduction stories (Welcome, Getting Started)
+4. Added manager.ts with purple theme for visual distinction
+5. Added lit dependency for Hub stories
+6. Added dev:all script to run both storybooks
+
+**Commands Run:**
+```bash
+git checkout -b poc/m4-storybook-hub
+bun run dev:hub
+git push origin poc/m4-storybook-hub
+```
+
+**Verification:**
+- ✅ Hub starts on port 6010
+- ✅ Theme Lab ref shows in sidebar when Theme Lab is running
+- ✅ Hub intro stories render correctly
+
+**Decisions Made:**
+- Deferred base library selector toolbar addon (would need more time)
+- Adapter integration deferred to M5 for framework examples
+
+---
+
 *Add new entries above this line*
