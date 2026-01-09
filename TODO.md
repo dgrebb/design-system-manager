@@ -150,27 +150,28 @@
 
 ---
 
-## Milestone 5: Framework Examples
+## Milestone 5: Framework Examples ✅
 **Branch:** `poc/m5-framework-examples`  
 **Goal:** Demonstrate consumption + export patterns
 
 ### Examples
-- [ ] React example app
-- [ ] Svelte 5 / SvelteKit example
-- [ ] Vue 3 example
-- [ ] Angular example
+- [x] React example app
+- [x] Svelte 5 / SvelteKit example
+- [x] Vue 3 example
+- [ ] Angular example — deferred (similar pattern)
 
 ### Documentation
-- [ ] EXPORTS.md describing all exports
-- [ ] Usage documentation per framework
-- [ ] Universal web component usage guide
+- [x] EXPORTS.md describing all exports
+- [x] Usage documentation per framework
+- [x] Universal web component usage guide
+- [x] Updated README.md with comprehensive docs
 
 ---
 
 ## Completion Checklist
 
-- [ ] All milestones complete
-- [ ] README.md explains full usage
-- [ ] TODO.md reflects completion state
-- [ ] WORKLOG.md is up to date
+- [x] All milestones complete (M0-M5)
+- [x] README.md explains full usage
+- [x] TODO.md reflects completion state
+- [x] WORKLOG.md is up to date
 - [ ] All Draft PRs merged or finalized

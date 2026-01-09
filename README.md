@@ -26,15 +26,19 @@ bun run dev
 
 ```
 /packages
-  /tokens          # Design token source and generators
-  /components      # Lit web components
+  /tokens          # Design token source and generators (111 tokens)
+  /components      # Lit web components (8 components)
   /adapters        # UI library adapters
-    /shadcn-svelte
+    /shadcn-svelte # Svelte adapter skeleton
     
 /apps
-  /storybook       # Theme Lab Storybook (primary)
-  /storybook-hub   # Composition hub with refs
-  /examples        # Framework usage examples
+  /storybook       # Theme Lab Storybook (primary, port 6006)
+  /storybook-hub   # Composition hub with refs (port 6010)
+  
+/examples
+  /svelte          # Svelte 5 usage example
+  /react           # React 19 usage example
+  /vue             # Vue 3 usage example
 ```
 
 ## Scripts
@@ -43,8 +47,10 @@ bun run dev
 |---------|-------------|
 | `bun run dev` | Start Theme Lab Storybook |
 | `bun run dev:hub` | Start Storybook Hub |
+| `bun run dev:all` | Start both (Theme Lab + Hub) |
 | `bun run build` | Build all packages |
 | `bun run tokens:build` | Generate token CSS files |
+| `bun run tokens:validate` | Validate tokens.json |
 | `bun run lint` | Run linting |
 | `bun run test` | Run tests |
 
@@ -60,46 +66,78 @@ Tokens are defined in `/packages/tokens/tokens.json` and generate:
 ```css
 .my-component {
   background-color: var(--tl-color-primary-base);
-  padding: var(--tl-spacing-md);
-  border-radius: var(--tl-radius-md);
+  padding: var(--tl-spacing-4);
+  border-radius: var(--tl-borderRadius-md);
+  font-family: var(--tl-typography-fontFamily-sans);
 }
 ```
 
 ## Web Components
 
-Components are built with Lit and use light DOM for compatibility with Tailwind and other CSS frameworks.
+Components are built with Lit and use Shadow DOM with CSS variable inheritance.
+
+| Component | Tag | Description |
+|-----------|-----|-------------|
+| Button | `<tl-button>` | Primary, secondary, ghost, outline variants |
+| Input | `<tl-input>` | Text input with sizes and error state |
+| Checkbox | `<tl-checkbox>` | Checkbox with label |
+| Switch | `<tl-switch>` | Toggle switch |
+| Card | `<tl-card>` | Container with header/footer slots |
+| Tooltip | `<tl-tooltip>` | Hover tooltip |
+| Tabs | `<tl-tabs>` | Tabbed content |
+| Badge | `<tl-badge>` | Status badges |
+
+### Example Usage
 
 ```html
-<tl-button variant="primary">Click me</tl-button>
-<tl-input placeholder="Enter text" />
-<tl-card>Content here</tl-card>
+<tl-button variant="primary" size="md">Click me</tl-button>
+<tl-input placeholder="Enter text" size="lg" />
+<tl-card>
+  <h3 slot="header">Title</h3>
+  <p>Content here</p>
+</tl-card>
 ```
+
+## Theme Lab Addon
+
+The Theme Lab panel in Storybook allows:
+- **Live token editing** with color pickers and text inputs
+- **Preset management** — Save/load custom presets (localStorage)
+- **Built-in presets** — Default, Dark Mode, High Contrast
+- **Export** — Copy CSS or download theme overrides
 
 ## Framework Integration
 
-### React
-```jsx
-import '@theme-lab/components';
-import '@theme-lab/tokens/tokens.css';
+See [EXPORTS.md](./EXPORTS.md) for comprehensive documentation.
 
-<tl-button variant="primary">Click</tl-button>
+### React
+
+```tsx
+import '@theme-lab/tokens/tokens.css';
+import '@theme-lab/components';
+
+function App() {
+  return <tl-button variant="primary">Click</tl-button>;
+}
 ```
 
-### Svelte 5
+### Svelte 5 / SvelteKit
+
 ```svelte
 <script>
-  import '@theme-lab/components';
   import '@theme-lab/tokens/tokens.css';
+  import '@theme-lab/components';
 </script>
 
 <tl-button variant="primary">Click</tl-button>
 ```
 
 ### Vue 3
+
 ```vue
 <script setup>
-import '@theme-lab/components';
 import '@theme-lab/tokens/tokens.css';
+import '@theme-lab/components';
 </script>
 
 <template>
@@ -107,11 +145,30 @@ import '@theme-lab/tokens/tokens.css';
 </template>
 ```
 
+## Storybook Hub
+
+The Hub composes multiple Storybooks:
+
+```bash
+# Start Theme Lab first
+bun run dev
+
+# Then start Hub
+bun run dev:hub
+
+# Open http://localhost:6010
+```
+
+The Hub shows:
+- Theme Lab components (from localhost:6006)
+- Documentation on adding adapters
+- Future: Additional library refs
+
 ## Adding Components
 
 1. Create component in `/packages/components/src/{name}/`
-2. Follow Lit template with light DOM
-3. Consume tokens via CSS variables
+2. Use Lit with Shadow DOM
+3. Consume tokens via CSS variables  
 4. Add Storybook stories
 5. Export from package index
 
@@ -121,16 +178,10 @@ See `.cursor/prompts/implement-component.md` for detailed guide.
 
 1. Add to `/packages/tokens/tokens.json`
 2. Run `bun run tokens:build`
-3. Update components if needed
+3. Run `bun run test` to update snapshots
+4. Update components if needed
 
 See `.cursor/prompts/add-token.md` for detailed guide.
-
-## Adapters
-
-Adapters integrate Theme Lab with existing UI libraries:
-- **shadcn-svelte** — Svelte 5 component library
-
-See `/packages/adapters/*/README.md` for adapter-specific documentation.
 
 ## Development
 
@@ -139,12 +190,26 @@ See `/packages/adapters/*/README.md` for adapter-specific documentation.
 - Node.js 20+ (for some tooling)
 
 ### Milestone Branches
-- `poc/m0-foundation` — Workspace setup
-- `poc/m1-tokens` — Token pipeline
-- `poc/m2-wc-components` — Web components
-- `poc/m3-theme-lab-addon` — Storybook addon
-- `poc/m4-storybook-hub` — Composition hub
-- `poc/m5-framework-examples` — Usage examples
+- `poc/m0-foundation` — Workspace setup ✅
+- `poc/m1-tokens` — Token pipeline ✅
+- `poc/m2-wc-components` — Web components ✅
+- `poc/m3-theme-lab-addon` — Storybook addon ✅
+- `poc/m4-storybook-hub` — Composition hub ✅
+- `poc/m5-framework-examples` — Usage examples ✅
+
+### Architecture
+
+```
+tokens.json
+    ↓ (generate.ts)
+tokens.css + tokens.dark.css + tailwind.theme.css
+    ↓
+Web Components (Lit, Shadow DOM)
+    ↓
+Storybook (preview + Theme Lab addon)
+    ↓
+Framework apps (React, Svelte, Vue, Angular)
+```
 
 ## License
 
