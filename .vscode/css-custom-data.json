@@ -1,0 +1,101 @@
+{
+  "version": 1.1,
+  "properties": [
+    {
+      "name": "--tl-color-primary-base",
+      "description": "Primary color base value"
+    },
+    {
+      "name": "--tl-color-primary-hover",
+      "description": "Primary color hover state"
+    },
+    {
+      "name": "--tl-color-primary-active",
+      "description": "Primary color active state"
+    },
+    {
+      "name": "--tl-color-primary-foreground",
+      "description": "Text color on primary background"
+    },
+    {
+      "name": "--tl-color-secondary-base",
+      "description": "Secondary color base value"
+    },
+    {
+      "name": "--tl-color-neutral-50",
+      "description": "Neutral color scale 50"
+    },
+    {
+      "name": "--tl-color-neutral-100",
+      "description": "Neutral color scale 100"
+    },
+    {
+      "name": "--tl-color-neutral-900",
+      "description": "Neutral color scale 900"
+    },
+    {
+      "name": "--tl-spacing-xs",
+      "description": "Extra small spacing (0.25rem)"
+    },
+    {
+      "name": "--tl-spacing-sm",
+      "description": "Small spacing (0.5rem)"
+    },
+    {
+      "name": "--tl-spacing-md",
+      "description": "Medium spacing (1rem)"
+    },
+    {
+      "name": "--tl-spacing-lg",
+      "description": "Large spacing (1.5rem)"
+    },
+    {
+      "name": "--tl-spacing-xl",
+      "description": "Extra large spacing (2rem)"
+    },
+    {
+      "name": "--tl-font-family-sans",
+      "description": "Sans-serif font family"
+    },
+    {
+      "name": "--tl-font-family-mono",
+      "description": "Monospace font family"
+    },
+    {
+      "name": "--tl-font-size-base",
+      "description": "Base font size (1rem)"
+    },
+    {
+      "name": "--tl-radius-sm",
+      "description": "Small border radius"
+    },
+    {
+      "name": "--tl-radius-md",
+      "description": "Medium border radius"
+    },
+    {
+      "name": "--tl-radius-lg",
+      "description": "Large border radius"
+    },
+    {
+      "name": "--tl-shadow-sm",
+      "description": "Small shadow"
+    },
+    {
+      "name": "--tl-shadow-md",
+      "description": "Medium shadow"
+    },
+    {
+      "name": "--tl-shadow-lg",
+      "description": "Large shadow"
+    },
+    {
+      "name": "--tl-transition-fast",
+      "description": "Fast transition (150ms)"
+    },
+    {
+      "name": "--tl-transition-normal",
+      "description": "Normal transition (200ms)"
+    }
+  ]
+}

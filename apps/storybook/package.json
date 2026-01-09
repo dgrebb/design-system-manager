@@ -1,0 +1,26 @@
+{
+  "name": "@theme-lab/storybook",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Theme Lab Storybook - Component preview and token editor",
+  "type": "module",
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build",
+    "test": "echo 'No tests yet'"
+  },
+  "dependencies": {
+    "@theme-lab/components": "workspace:*",
+    "@theme-lab/tokens": "workspace:*",
+    "lit": "^3.1.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.0.0",
+    "@storybook/addon-links": "^8.0.0",
+    "@storybook/blocks": "^8.0.0",
+    "@storybook/web-components": "^8.0.0",
+    "@storybook/web-components-vite": "^8.0.0",
+    "storybook": "^8.0.0",
+    "vite": "^5.0.0"
+  }
+}

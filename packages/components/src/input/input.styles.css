@@ -1,0 +1,66 @@
+/**
+ * Theme Lab Input Styles
+ * Uses CSS custom properties from @theme-lab/tokens
+ */
+
+.tl-input {
+  /* Base styles */
+  display: block;
+  width: 100%;
+  font-family: var(--tl-typography-fontFamily-sans);
+  background-color: var(--tl-color-background-base);
+  color: var(--tl-color-foreground-base);
+  border: 1px solid var(--tl-color-border-base);
+  transition: all var(--tl-transition-fast);
+}
+
+/* Focus styles */
+.tl-input:focus {
+  outline: none;
+  border-color: var(--tl-color-primary-base);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Placeholder */
+.tl-input::placeholder {
+  color: var(--tl-color-foreground-subtle);
+}
+
+/* Disabled styles */
+.tl-input:disabled {
+  background-color: var(--tl-color-background-muted);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Sizes */
+.tl-input--sm {
+  padding: var(--tl-spacing-1-5) var(--tl-spacing-3);
+  font-size: var(--tl-typography-fontSize-sm);
+  border-radius: var(--tl-borderRadius-sm);
+  min-height: 32px;
+}
+
+.tl-input--md {
+  padding: var(--tl-spacing-2) var(--tl-spacing-4);
+  font-size: var(--tl-typography-fontSize-base);
+  border-radius: var(--tl-borderRadius-md);
+  min-height: 40px;
+}
+
+.tl-input--lg {
+  padding: var(--tl-spacing-2-5) var(--tl-spacing-5);
+  font-size: var(--tl-typography-fontSize-lg);
+  border-radius: var(--tl-borderRadius-lg);
+  min-height: 48px;
+}
+
+/* Error state */
+.tl-input--error {
+  border-color: var(--tl-color-error-base);
+}
+
+.tl-input--error:focus {
+  border-color: var(--tl-color-error-base);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
