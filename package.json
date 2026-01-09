@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "bun run --filter @theme-lab/storybook dev",
     "dev:hub": "bun run --filter @theme-lab/storybook-hub dev",
+    "dev:all": "bun run dev & sleep 5 && bun run dev:hub",
     "dev:adapters": "bun run --filter '@theme-lab/adapter-*' dev",
     "build": "bun run build:tokens && bun run build:components && bun run build:storybook",
     "build:tokens": "bun run --filter @theme-lab/tokens build",

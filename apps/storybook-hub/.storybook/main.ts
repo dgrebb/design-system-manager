@@ -3,12 +3,10 @@ import { dirname } from "node:path";
 import type { StorybookConfig } from '@storybook/web-components-vite';
 
 const config: StorybookConfig = {
-  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: ['../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-docs"),
-    getAbsolutePath("@storybook/addon-a11y"),
-    getAbsolutePath("@storybook/addon-vitest")
   ],
 
   framework: {
@@ -21,7 +19,7 @@ const config: StorybookConfig = {
       title: 'Theme Lab',
       url: 'http://localhost:6006',
     },
-    // Adapter storybooks will be added here
+    // Adapter storybooks can be added here when running
     // 'shadcn-svelte': {
     //   title: 'shadcn-svelte Adapter',
     //   url: 'http://localhost:6007',
