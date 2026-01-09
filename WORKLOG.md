@@ -176,4 +176,49 @@ git push origin poc/m2-wc-components
 
 ---
 
+## 2026-01-09 (continued)
+
+### Session 5 - Milestone 3: Theme Lab Addon
+
+**Summary:** Created custom Storybook addon for live token editing.
+
+**Actions Taken:**
+1. Created addon structure under `apps/storybook/src/addon/`
+2. Built React-based panel component with token editors
+3. Implemented color pickers for color tokens
+4. Added text inputs for spacing/typography tokens
+5. Created preset manager with localStorage persistence
+6. Added built-in presets: Default, Dark Mode, High Contrast
+7. Added export functionality (Copy CSS, Download)
+8. Created withThemeLab decorator for applying overrides
+
+**Files Created:**
+- `apps/storybook/src/addon/Panel.tsx` — Main addon panel UI
+- `apps/storybook/src/addon/manager.tsx` — Storybook registration
+- `apps/storybook/src/addon/constants.ts` — Addon IDs and event names
+- `apps/storybook/src/addon/types.ts` — TypeScript interfaces
+- `apps/storybook/src/addon/token-parser.ts` — Parse tokens.json
+- `apps/storybook/src/addon/preset-manager.ts` — Preset CRUD operations
+- `apps/storybook/src/addon/withThemeLab.ts` — Story decorator
+
+**Commands Run:**
+```bash
+git checkout -b poc/m3-theme-lab-addon
+bun add react react-dom @types/react @types/react-dom
+bun run dev
+git push origin poc/m3-theme-lab-addon
+```
+
+**Decisions Made:**
+- Used React for addon panel (Storybook's native UI layer)
+- Plain HTML/CSS styles instead of Storybook internal components (API changes in v10)
+- localStorage for preset persistence (simple, no backend needed)
+- Parse tokens.json at build time for editor population
+
+**Known Issues:**
+- Live updates require iframe communication (channel events)
+- Currently updates apply on page refresh via localStorage
+
+---
+
 *Add new entries above this line*

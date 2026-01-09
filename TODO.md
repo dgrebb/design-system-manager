@@ -100,30 +100,30 @@
 
 ---
 
-## Milestone 3: Theme Lab Addon
+## Milestone 3: Theme Lab Addon ✅
 **Branch:** `poc/m3-theme-lab-addon`  
 **Goal:** Global token editor + per-story overrides + export UI
 
 ### Addon Panel
-- [ ] Create Storybook addon structure
-- [ ] Color picker controls
-- [ ] Slider/number inputs for spacing
-- [ ] Text inputs for fonts
+- [x] Create Storybook addon structure
+- [x] Color picker controls
+- [x] Slider/number inputs for spacing
+- [x] Text inputs for fonts/typography
 
 ### Preset System
-- [ ] Save preset to localStorage
-- [ ] Load preset from localStorage
-- [ ] Built-in presets (Default, Dark, High Contrast)
+- [x] Save preset to localStorage
+- [x] Load preset from localStorage
+- [x] Built-in presets (Default, Dark, High Contrast)
 
 ### Export
-- [ ] Export `tokens.css` button
-- [ ] Export `tokens.dark.css` button
-- [ ] Export `tailwind.theme.css` button
-- [ ] Copy to clipboard option
+- [x] Export CSS overrides button (Copy CSS)
+- [x] Download CSS button
+- [ ] Export full `tokens.css` — deferred
+- [ ] Export `tailwind.theme.css` — deferred
 
 ### Decorators
-- [ ] Per-story local override decorator
-- [ ] Story parameter for token overrides
+- [x] Per-story local override decorator (withThemeLab)
+- [x] Story parameter for token overrides (parameters.themeLab.tokens)
 
 ---
 
