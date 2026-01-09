@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import '@theme-lab/components';
 
@@ -79,7 +79,8 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
-    label: 'Secondary Button',
+    label: "My Butt",
+    size: "sm"
   },
 };
 

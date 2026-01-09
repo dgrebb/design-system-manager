@@ -1,15 +1,21 @@
+import { fileURLToPath } from "node:url";
+import { dirname } from "node:path";
 import type { StorybookConfig } from '@storybook/web-components-vite';
 
 const config: StorybookConfig = {
   stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  addons: [
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-docs"),
+    getAbsolutePath("@storybook/addon-a11y"),
+    getAbsolutePath("@storybook/addon-vitest")
+  ],
+
   framework: {
-    name: '@storybook/web-components-vite',
+    name: getAbsolutePath("@storybook/web-components-vite"),
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
-  },
+
   refs: {
     'theme-lab': {
       title: 'Theme Lab',
@@ -20,7 +26,11 @@ const config: StorybookConfig = {
     //   title: 'shadcn-svelte Adapter',
     //   url: 'http://localhost:6007',
     // },
-  },
+  }
 };
 
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+}

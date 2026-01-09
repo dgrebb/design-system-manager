@@ -1,23 +1,28 @@
 import type { StorybookConfig } from '@storybook/web-components-vite';
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const config: StorybookConfig = {
   stories: [
-    '../stories/**/*.mdx',
     '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
-    '../../../packages/components/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
+
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-docs"),
+    getAbsolutePath("@storybook/addon-a11y"),
   ],
+
   framework: {
-    name: '@storybook/web-components-vite',
+    name: getAbsolutePath("@storybook/web-components-vite"),
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
-  },
-  staticDirs: ['../public'],
+
+  staticDirs: ['../public']
 };
 
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+}

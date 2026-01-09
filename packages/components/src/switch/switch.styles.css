@@ -1,0 +1,109 @@
+/**
+ * Theme Lab Switch Styles
+ */
+
+.tl-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tl-spacing-2, 0.5rem);
+  cursor: pointer;
+  font-family: var(--tl-typography-fontFamily-sans, system-ui, sans-serif);
+  font-size: var(--tl-typography-fontSize-base, 1rem);
+  color: var(--tl-color-foreground-base, #0f172a);
+  user-select: none;
+}
+
+.tl-switch--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tl-switch__track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  border-radius: var(--tl-borderRadius-full, 9999px);
+  background-color: var(--tl-color-neutral-300, #cbd5e1);
+  cursor: pointer;
+  transition: background-color var(--tl-transition-fast, 150ms ease);
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.tl-switch__track:focus-visible {
+  outline: 2px solid var(--tl-color-primary-base, #3b82f6);
+  outline-offset: 2px;
+}
+
+.tl-switch__track:disabled {
+  cursor: not-allowed;
+}
+
+.tl-switch--checked .tl-switch__track {
+  background-color: var(--tl-color-primary-base, #3b82f6);
+}
+
+.tl-switch__thumb {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: var(--tl-shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
+  transition: transform var(--tl-transition-fast, 150ms ease);
+}
+
+/* Size: sm */
+.tl-switch--sm .tl-switch__track {
+  width: 2rem;
+  height: 1.125rem;
+}
+
+.tl-switch--sm .tl-switch__thumb {
+  width: 0.875rem;
+  height: 0.875rem;
+  left: 2px;
+}
+
+.tl-switch--sm.tl-switch--checked .tl-switch__thumb {
+  transform: translateX(0.875rem);
+}
+
+/* Size: md */
+.tl-switch--md .tl-switch__track {
+  width: 2.75rem;
+  height: 1.5rem;
+}
+
+.tl-switch--md .tl-switch__thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  left: 2px;
+}
+
+.tl-switch--md.tl-switch--checked .tl-switch__thumb {
+  transform: translateX(1.25rem);
+}
+
+/* Size: lg */
+.tl-switch--lg .tl-switch__track {
+  width: 3.5rem;
+  height: 2rem;
+}
+
+.tl-switch--lg .tl-switch__thumb {
+  width: 1.75rem;
+  height: 1.75rem;
+  left: 2px;
+}
+
+.tl-switch--lg.tl-switch--checked .tl-switch__thumb {
+  transform: translateX(1.5rem);
+}
+
+.tl-switch__label {
+  line-height: 1.5;
+}
+
+.tl-switch__label:empty {
+  display: none;
+}

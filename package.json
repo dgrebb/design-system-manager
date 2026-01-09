@@ -32,13 +32,16 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
+    "@vitest/browser": "^4.0.16",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-lit": "^1.11.0",
     "husky": "^9.0.0",
     "lint-staged": "^15.2.0",
+    "playwright": "^1.57.0",
     "prettier": "^3.2.0",
-    "typescript": "^5.4.0"
+    "typescript": "^5.4.0",
+    "vitest": "^4.0.16"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
