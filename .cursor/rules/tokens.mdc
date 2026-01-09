@@ -1,0 +1,72 @@
+# Token System Rules
+
+## Token Architecture
+
+### Source of Truth
+- `/packages/tokens/tokens.json` is the canonical token definition
+- All other token files are generated artifacts
+
+### Token Categories
+
+```json
+{
+  "color": {
+    "primary": { "base": "#...", "hover": "#...", "active": "#..." },
+    "secondary": { ... },
+    "neutral": { ... },
+    "success": { ... },
+    "warning": { ... },
+    "error": { ... }
+  },
+  "spacing": {
+    "xs": "0.25rem",
+    "sm": "0.5rem",
+    "md": "1rem",
+    "lg": "1.5rem",
+    "xl": "2rem"
+  },
+  "typography": {
+    "fontFamily": { "sans": "...", "mono": "..." },
+    "fontSize": { "xs": "...", "sm": "...", "base": "...", "lg": "...", "xl": "..." },
+    "fontWeight": { "normal": "400", "medium": "500", "semibold": "600", "bold": "700" },
+    "lineHeight": { ... }
+  },
+  "borderRadius": { "none": "0", "sm": "...", "md": "...", "lg": "...", "full": "9999px" },
+  "shadow": { "sm": "...", "md": "...", "lg": "..." },
+  "transition": { "fast": "...", "normal": "...", "slow": "..." }
+}
+```
+
+### CSS Variable Naming
+
+```css
+--tl-color-primary-base
+--tl-color-primary-hover
+--tl-spacing-md
+--tl-font-size-base
+--tl-radius-md
+--tl-shadow-md
+```
+
+Prefix: `--tl-` (theme-lab)
+
+### Generated Files
+
+1. `tokens.css` — All CSS custom properties
+2. `tokens.dark.css` — Dark theme overrides
+3. `tailwind.theme.css` — Tailwind v4 theme configuration
+
+### Generation Commands
+
+```bash
+bun run tokens:build     # Generate all token outputs
+bun run tokens:watch     # Watch and regenerate
+bun run tokens:validate  # Validate token schema
+```
+
+## Adding New Tokens
+
+1. Add to `tokens.json` following existing structure
+2. Run `bun run tokens:build`
+3. Update component stories if needed
+4. Document in WORKLOG.md

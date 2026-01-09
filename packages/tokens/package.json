@@ -1,0 +1,30 @@
+{
+  "name": "@theme-lab/tokens",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Design tokens for Theme Lab",
+  "type": "module",
+  "main": "./dist/tokens.css",
+  "exports": {
+    ".": "./dist/tokens.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./tokens.dark.css": "./dist/tokens.dark.css",
+    "./tailwind.theme.css": "./dist/tailwind.theme.css",
+    "./tokens.json": "./tokens.json"
+  },
+  "files": [
+    "dist",
+    "tokens.json"
+  ],
+  "scripts": {
+    "build": "bun run src/generate.ts",
+    "watch": "bun run --watch src/generate.ts",
+    "validate": "bun run src/validate.ts",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0"
+  }
+}

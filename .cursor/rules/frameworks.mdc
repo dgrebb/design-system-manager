@@ -1,0 +1,153 @@
+# Framework Support Rules
+
+## Supported Frameworks
+
+1. React (latest stable)
+2. Svelte 5 / SvelteKit
+3. Vue 3
+4. Angular (current stable)
+5. Universal (web components + tokens.css)
+
+## Integration Pattern
+
+All frameworks follow the same base pattern:
+1. Import `tokens.css` for design tokens
+2. Use web components directly or via thin wrappers
+
+## React Integration
+
+```tsx
+// Direct web component usage
+import '@theme-lab/components';
+import '@theme-lab/tokens/tokens.css';
+
+function App() {
+  return (
+    <tl-button variant="primary" onClick={() => console.log('clicked')}>
+      Click me
+    </tl-button>
+  );
+}
+
+// Optional wrapper for better DX
+import { Button } from '@theme-lab/react';
+
+function App() {
+  return (
+    <Button variant="primary" onClick={() => console.log('clicked')}>
+      Click me
+    </Button>
+  );
+}
+```
+
+## Svelte 5 / SvelteKit Integration
+
+### Key Rules
+- NO legacy dynamic-component patterns
+- Render component variables directly: `<Thing />`
+- Use Svelte 5 runes for state
+
+```svelte
+<script lang="ts">
+  import '@theme-lab/components';
+  import '@theme-lab/tokens/tokens.css';
+</script>
+
+<tl-button variant="primary" onclick={() => console.log('clicked')}>
+  Click me
+</tl-button>
+```
+
+### Dynamic Component Pattern (Svelte 5)
+
+```svelte
+<script lang="ts">
+  import Button from './Button.svelte';
+  import Input from './Input.svelte';
+
+  const components = { Button, Input };
+  
+  let { componentName } = $props<{ componentName: keyof typeof components }>();
+  
+  // Get the component directly
+  const Component = $derived(components[componentName]);
+</script>
+
+<!-- Render directly, no <svelte:component> needed in Svelte 5 -->
+<Component />
+```
+
+## Vue 3 Integration
+
+```vue
+<script setup lang="ts">
+import '@theme-lab/components';
+import '@theme-lab/tokens/tokens.css';
+</script>
+
+<template>
+  <tl-button variant="primary" @click="handleClick">
+    Click me
+  </tl-button>
+</template>
+```
+
+### Vue Custom Element Config
+
+```typescript
+// vite.config.ts
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('tl-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+## Angular Integration
+
+```typescript
+// app.module.ts
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import '@theme-lab/components';
+
+@NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule {}
+```
+
+```typescript
+// styles.css
+@import '@theme-lab/tokens/tokens.css';
+```
+
+```html
+<!-- component.html -->
+<tl-button variant="primary" (click)="handleClick()">
+  Click me
+</tl-button>
+```
+
+## Universal Usage
+
+For any framework or vanilla HTML:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="path/to/tokens.css">
+  <script type="module" src="path/to/components.js"></script>
+</head>
+<body>
+  <tl-button variant="primary">Click me</tl-button>
+</body>
+</html>
+```

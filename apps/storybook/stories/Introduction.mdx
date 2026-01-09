@@ -1,0 +1,68 @@
+# Theme Lab
+
+Welcome to **Theme Lab** — a design system manager with live token editing.
+
+## What is Theme Lab?
+
+Theme Lab enables you to:
+
+- 🎨 **Live Token Editing** — Tweak design tokens and see changes instantly
+- 🧩 **Component Library** — Browse and test web components
+- 📦 **Multi-Framework Export** — Use in React, Svelte, Vue, Angular, or vanilla HTML
+- 🔗 **Library Composition** — Integrate with existing UI libraries
+
+## Getting Started
+
+### Browse Components
+
+Use the sidebar to navigate through available components. Each component includes:
+- Interactive examples
+- Variant documentation
+- Token usage information
+
+### Edit Tokens
+
+(Coming in Milestone 3)
+
+The Theme Lab addon will allow you to:
+- Edit global design tokens in real-time
+- Save custom presets
+- Export modified tokens
+
+### Export for Your Framework
+
+Components work in any framework:
+
+```html
+<!-- Import tokens and components -->
+<link rel="stylesheet" href="path/to/tokens.css" />
+<script type="module" src="path/to/components.js"></script>
+
+<!-- Use components -->
+<tl-button variant="primary">Click me</tl-button>
+```
+
+## Token System
+
+All components use CSS custom properties with the `--tl-` prefix:
+
+| Category | Example |
+|----------|---------|
+| Colors | `--tl-color-primary-base` |
+| Spacing | `--tl-spacing-4` |
+| Typography | `--tl-typography-fontSize-base` |
+| Radius | `--tl-borderRadius-md` |
+| Shadows | `--tl-shadow-md` |
+
+## Architecture
+
+```
+packages/
+├── tokens/      # Design token source & generators
+├── components/  # Lit web components
+└── adapters/    # UI library integrations
+
+apps/
+├── storybook/   # This Theme Lab
+└── storybook-hub/ # Composition hub
+```

@@ -1,0 +1,111 @@
+# Web Components Rules
+
+## Component Architecture
+
+### Technology Stack
+- **Library**: Lit 3.x
+- **DOM Mode**: Light DOM preferred (Tailwind/base-lib compatible)
+- **Shadow DOM**: Optional, behind a flag
+
+### Component List (POC)
+
+1. Button
+2. Input
+3. Checkbox
+4. Switch
+5. Select
+6. Card
+7. Dialog/Modal
+8. Tooltip
+9. Tabs
+10. Badge (optional)
+11. Avatar (optional)
+12. Alert (optional)
+
+### File Structure
+
+```
+packages/components/
+├── src/
+│   ├── button/
+│   │   ├── button.ts
+│   │   ├── button.styles.ts
+│   │   └── button.stories.ts
+│   ├── input/
+│   │   └── ...
+│   └── index.ts
+├── package.json
+└── tsconfig.json
+```
+
+### Component Template
+
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+
+@customElement('tl-button')
+export class TlButton extends LitElement {
+  // Use light DOM for Tailwind compatibility
+  protected createRenderRoot() {
+    return this;
+  }
+
+  @property({ type: String }) variant: 'primary' | 'secondary' | 'ghost' = 'primary';
+  @property({ type: String }) size: 'sm' | 'md' | 'lg' = 'md';
+  @property({ type: Boolean }) disabled = false;
+
+  render() {
+    return html`
+      <button
+        class="tl-button tl-button--${this.variant} tl-button--${this.size}"
+        ?disabled=${this.disabled}
+      >
+        <slot></slot>
+      </button>
+    `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'tl-button': TlButton;
+  }
+}
+```
+
+### Token Integration
+
+Components consume tokens via CSS classes:
+
+```css
+.tl-button {
+  background-color: var(--tl-color-primary-base);
+  padding: var(--tl-spacing-sm) var(--tl-spacing-md);
+  border-radius: var(--tl-radius-md);
+  font-size: var(--tl-font-size-base);
+  transition: all var(--tl-transition-fast);
+}
+
+.tl-button:hover {
+  background-color: var(--tl-color-primary-hover);
+}
+```
+
+### Accessibility Requirements
+
+- Focus visible states
+- Keyboard navigation
+- ARIA attributes where needed
+- Color contrast compliance
+- Reduced motion support
+
+### Storybook Stories
+
+Each component needs:
+- Default story
+- All variants
+- All sizes
+- Disabled state
+- Interactive examples
+- Accessibility notes

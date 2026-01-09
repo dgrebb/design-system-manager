@@ -1,0 +1,27 @@
+{
+  "name": "@theme-lab/adapter-shadcn-svelte",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Theme Lab adapter for shadcn-svelte",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens.css": "./dist/tokens.css"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "echo 'No tests yet'"
+  },
+  "dependencies": {
+    "@theme-lab/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}

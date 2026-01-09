@@ -1,0 +1,68 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Dev: Start Theme Lab",
+      "type": "shell",
+      "command": "bun run dev",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Dev: Start Hub",
+      "type": "shell",
+      "command": "bun run dev:hub",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build: All Packages",
+      "type": "shell",
+      "command": "bun run build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "Build: Tokens",
+      "type": "shell",
+      "command": "bun run tokens:build",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: All",
+      "type": "shell",
+      "command": "bun run test",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Lint: All",
+      "type": "shell",
+      "command": "bun run lint",
+      "group": "test",
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "Lint: Fix",
+      "type": "shell",
+      "command": "bun run lint:fix",
+      "group": "test",
+      "problemMatcher": ["$eslint-stylish"]
+    }
+  ]
+}

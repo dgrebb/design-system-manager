@@ -1,0 +1,125 @@
+# Storybook Rules
+
+## Configuration
+
+### Renderer
+- Web Components renderer (`@storybook/web-components-vite`)
+
+### Structure
+
+```
+apps/storybook/
+├── .storybook/
+│   ├── main.ts
+│   ├── preview.ts
+│   ├── manager.ts
+│   └── theme.ts
+├── stories/
+│   └── ... (component stories imported from packages)
+└── package.json
+```
+
+## Theme Lab Addon
+
+### Panel Features
+
+1. **Global Token Editor**
+   - Color pickers for color tokens
+   - Number inputs/sliders for spacing, sizing
+   - Text inputs for font families
+   - Live update via CSS variable injection
+
+2. **Preset Management**
+   - Save current state as named preset
+   - Load presets from localStorage
+   - Built-in presets: Default, Dark, High Contrast
+
+3. **Export Functions**
+   - Download `tokens.css`
+   - Download `tokens.dark.css`
+   - Download `tailwind.theme.css`
+   - Copy to clipboard options
+
+### Implementation
+
+```typescript
+// addons/theme-lab/src/Panel.tsx
+import { useAddonState, useChannel } from '@storybook/manager-api';
+import { ADDON_ID, EVENTS } from './constants';
+
+export const Panel = () => {
+  const [tokens, setTokens] = useAddonState(ADDON_ID, defaultTokens);
+  const emit = useChannel({});
+
+  const updateToken = (path: string, value: string) => {
+    const newTokens = { ...tokens };
+    // Update token at path
+    setTokens(newTokens);
+    emit(EVENTS.UPDATE_TOKENS, newTokens);
+  };
+
+  // ... render token editors
+};
+```
+
+## Per-Story Overrides
+
+### Decorator Pattern
+
+```typescript
+// decorators/localOverride.ts
+import { Decorator } from '@storybook/web-components';
+
+export const withLocalOverrides: Decorator = (story, context) => {
+  const overrides = context.parameters?.tokenOverrides;
+  
+  if (!overrides) return story();
+  
+  const styleVars = Object.entries(overrides)
+    .map(([key, value]) => `${key}: ${value}`)
+    .join('; ');
+  
+  return html`
+    <div style="${styleVars}">
+      ${story()}
+    </div>
+  `;
+};
+```
+
+### Usage in Stories
+
+```typescript
+export const CustomTheme: Story = {
+  parameters: {
+    tokenOverrides: {
+      '--tl-color-primary-base': '#ff6b6b',
+      '--tl-radius-md': '0',
+    },
+  },
+};
+```
+
+## Hub Composition
+
+### Configuration
+
+```typescript
+// apps/storybook-hub/.storybook/main.ts
+const config: StorybookConfig = {
+  refs: {
+    'theme-lab': {
+      title: 'Theme Lab',
+      url: 'http://localhost:6006',
+    },
+    'shadcn-adapter': {
+      title: 'shadcn Adapter',
+      url: 'http://localhost:6007',
+    },
+  },
+};
+```
+
+### Base Library Selector
+
+Toolbar addon for switching focus between composed storybooks.

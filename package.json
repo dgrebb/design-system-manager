@@ -1,0 +1,56 @@
+{
+  "name": "theme-lab",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Theme Lab POC - Design token management with live Storybook preview",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "bun run --filter @theme-lab/storybook dev",
+    "dev:hub": "bun run --filter @theme-lab/storybook-hub dev",
+    "dev:adapters": "bun run --filter '@theme-lab/adapter-*' dev",
+    "build": "bun run build:tokens && bun run build:components && bun run build:storybook",
+    "build:tokens": "bun run --filter @theme-lab/tokens build",
+    "build:components": "bun run --filter @theme-lab/components build",
+    "build:storybook": "bun run --filter @theme-lab/storybook build",
+    "tokens:build": "bun run --filter @theme-lab/tokens build",
+    "tokens:watch": "bun run --filter @theme-lab/tokens watch",
+    "tokens:validate": "bun run --filter @theme-lab/tokens validate",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.svelte",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx,.svelte --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf node_modules packages/*/node_modules apps/*/node_modules packages/*/dist apps/*/dist",
+    "prepare": "husky || true"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-lit": "^1.11.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.0",
+    "typescript": "^5.4.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "packageManager": "bun@1.1.0"
+}

@@ -1,0 +1,102 @@
+# Adapter Rules
+
+## Adapter Strategy
+
+Adapters are "curated integrations" — not auto-fix solutions.
+Each adapter documents what works, what doesn't, and manual steps required.
+
+## POC Adapters
+
+### Priority A: shadcn-svelte
+- Maps to Svelte 5 patterns
+- Token → CSS variable mapping
+- Component variant alignment
+
+### Priority B (optional): One of:
+- Nuxt UI (Vue)
+- Flowbite (Tailwind plugin)
+- Headless library (Ark/Bits/Reka)
+
+## Adapter Structure
+
+```
+packages/adapters/
+├── shadcn-svelte/
+│   ├── README.md
+│   ├── src/
+│   │   ├── token-map.ts
+│   │   ├── variants.ts
+│   │   └── index.ts
+│   ├── stories/
+│   │   └── ... (adapter-specific stories)
+│   └── package.json
+└── nuxt-ui/
+    └── ...
+```
+
+## Adapter README Template
+
+```markdown
+# {Adapter Name} Adapter
+
+## Overview
+Brief description of the integration.
+
+## Token Mapping
+
+| Theme Lab Token | {Library} Variable | Notes |
+|-----------------|-------------------|-------|
+| --tl-color-primary-base | --primary | Direct map |
+| --tl-radius-md | --radius | Scale difference |
+
+## Known Mismatches
+
+### Variants
+- Theme Lab uses `variant="primary"`, library uses `color="primary"`
+- Size scales differ: TL `sm/md/lg`, Library `xs/sm/md/lg/xl`
+
+### Classes
+- Library requires additional utility classes not generated
+
+## Preview in Hub
+
+1. Start adapter storybook: `bun run dev:adapters`
+2. View in hub at http://localhost:6010
+
+## Automation Scope
+
+### Automated
+- Token injection
+- Base variant mapping
+
+### Manual Required
+- Complex variant combinations
+- Library-specific props
+- Responsive patterns
+```
+
+## Integration Pattern
+
+```typescript
+// packages/adapters/shadcn-svelte/src/token-map.ts
+export const tokenMap = {
+  // Color mappings
+  '--tl-color-primary-base': '--primary',
+  '--tl-color-primary-hover': '--primary-foreground',
+  
+  // Spacing mappings  
+  '--tl-spacing-md': '--spacing-4',
+  
+  // Radius mappings
+  '--tl-radius-md': '--radius',
+};
+
+export function generateAdapterCSS(tokens: TokenSet): string {
+  return Object.entries(tokenMap)
+    .map(([tlToken, adapterToken]) => {
+      const value = getTokenValue(tokens, tlToken);
+      return `${adapterToken}: ${value};`;
+    })
+    .join('\n');
+}
+```
