@@ -1,6 +1,9 @@
 import { addons } from 'storybook/manager-api';
 import { create } from 'storybook/theming/create';
 
+// Register Theme Lab addon
+import '../src/addon/manager';
+
 const theme = create({
   base: 'light',
   brandTitle: 'Theme Lab',

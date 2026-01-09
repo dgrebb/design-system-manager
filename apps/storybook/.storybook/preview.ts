@@ -6,6 +6,9 @@ import '@theme-lab/tokens/tokens.css';
 // Import components to register custom elements
 import '@theme-lab/components';
 
+// Import Theme Lab decorator
+import { withThemeLab } from '../src/addon/withThemeLab';
+
 const preview: Preview = {
   parameters: {
     controls: {
@@ -43,6 +46,7 @@ const preview: Preview = {
   },
 
   decorators: [
+    withThemeLab,
     (story, context) => {
       const theme = context.globals.theme || 'light';
       document.documentElement.setAttribute('data-theme', theme);
